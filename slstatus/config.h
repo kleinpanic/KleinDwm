@@ -13,8 +13,8 @@ static const struct arg args[] = {
     /* function format                     argument */
     
     // WiFi SSID and Signal Strength
-    { wifi_essid,       "SSID: %s ",           "wlan0" },
-    { wifi_perc,        "Signal: %s%% | ",     "wlan0" },
+    { wifi_essid,       "SSID: %s ",           "wlp0s20f3" },
+    { wifi_perc,        "Signal: %s%% | ",     "wlp0s20f3" },
     
     // Battery Information
     { battery_perc,     "Battery: %s%% ",      "BAT0" },
@@ -33,10 +33,10 @@ static const struct arg args[] = {
     { disk_perc,        "Disk Usage: %s%% | ", "/" },
     
     // Current Username
-    { username,         "User: %s | ",         NULL },
+//    { username,         "User: %s | ",         NULL },
     
     // Uptime
-    { uptime,           "Uptime: %s | ",       NULL },
+//    { uptime,           "Uptime: %s | ",       NULL },
 
     // Date and Time
     { datetime,         "Date: %s ",           "%F" },

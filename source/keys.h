@@ -51,7 +51,7 @@ static const Key keys[] = {
         { ControlMask,                  XK_k,       XK_b,      spawn,          SHCMD("pkill brave")},
         { ControlMask,                  XK_k,       XK_d,      spawn,          SHCMD("pkill Discord")},
 		
-		{ ControlMask,                  -1,         XK_t,      setlayout,      {.v = &layouts[0]} },
+		{ MODKEY|ControlMask,                  -1,         XK_t,      setlayout,      { .v = &layouts[0] } },
 		{ ControlMask,                  -1,         XK_f,      setlayout,      {.v = &layouts[1]} },
 		{ ControlMask,                  -1,         XK_m,      setlayout,      {.v = &layouts[2]} },
 		{ ControlMask,                  -1,         XK_space,  setlayout,      {0} },
