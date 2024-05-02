@@ -10,17 +10,37 @@ static const char unknown_str[] = "n/a";
 #define MAXLEN 2048
 
 static const struct arg args[] = {
-	/* function format                      argument */
-    { battery_perc,     "%s%%",        "BAT0" },
-	{ battery_state,    " %s ",       "BAT0" },
+    /* function format                     argument */
+    
+    // WiFi SSID and Signal Strength
+    { wifi_essid,       "SSID: %s ",           "wlan0" },
+    { wifi_perc,        "Signal: %s%% | ",     "wlan0" },
+    
+    // Battery Information
+    { battery_perc,     "Battery: %s%% ",      "BAT0" },
+    { battery_state,    "Status: %s | ",       "BAT0" },
+    
+    // RAM Information
+    { ram_free,         "RAM Free: %s | ",     NULL },
+    { ram_perc,         "RAM Usage: %s%% | ",  NULL },
+    
+    // CPU Usage and Frequency
+    { cpu_perc,         "CPU Usage: %s%% ",    NULL },
+    { cpu_freq,         "Frequency: %s Hz |",  NULL },
+    
+    // Disk Space
+    { disk_free,        "Disk Free: %s | ",    "/" },
+    { disk_perc,        "Disk Usage: %s%% | ", "/" },
+    
+    // Current Username
+    { username,         "User: %s | ",         NULL },
+    
+    // Uptime
+    { uptime,           "Uptime: %s | ",       NULL },
 
-    { cpu_perc,         "| CPU %s%% ", NULL },
-    { cpu_freq,         " %s |",       NULL },
-	
-    { datetime,         " %s  ",      "%F" },
-    { datetime,         " %s  |",     "%T" },
-
-    { keymap,           " %s  ",      NULL },
+    // Date and Time
+    { datetime,         "Date: %s ",           "%F" },
+    { datetime,         "Time: %s |",          "%T" }
 };
 
 /*
