@@ -31,6 +31,9 @@ static const char *increase_vol[]   = { "pactl", "set-sink-volume", "0", "+5%", 
 static const char *decrease_vol[] = { "pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mute_vol[] = { "pactl", "set-sink-mute",   "0", "toggle",  NULL };
 
+/* nvim */ 
+static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", "KleinWiki/index.md", NULL };
+
 static const Key keys[] = {
 		/* modifier                     chain key   key        function        argument */
 		{ MODKEY,                       -1,         XK_p,      spawn,          {.v = dmenucmd } },
@@ -40,21 +43,21 @@ static const Key keys[] = {
 		{ MODKEY,                       -1,         XK_k,      focusstack,     {.i = -1 } },
 		{ MODKEY,                       -1,         XK_i,      incnmaster,     {.i = +1 } },
 		{ MODKEY,                       -1,         XK_d,      incnmaster,     {.i = -1 } },
-	    { ShiftMask,                    -1,         XK_x,      movestack,      {.i = +1 } },
-	    { ShiftMask,                    -1,         XK_z,      movestack,      {.i = -1 } },
+	    { MODKEY|ShiftMask,                    -1,         XK_x,      movestack,      {.i = +1 } },
+	    { MODKEY|ShiftMask,                    -1,         XK_z,      movestack,      {.i = -1 } },
 		{ MODKEY,                       -1,         XK_h,      setmfact,       {.f = -0.05} },
 		{ MODKEY,                       -1,         XK_l,      setmfact,       {.f = +0.05} },
 		{ MODKEY,                       -1,         XK_Return, zoom,           {0} },
 		{ MODKEY,                       -1,         XK_Tab,    view,           {0} },
-		
+
         { MODKEY|ShiftMask,             -1,         XK_c,      killclient,     {0} },
         { ControlMask,                  XK_k,       XK_b,      spawn,          SHCMD("pkill brave")},
         { ControlMask,                  XK_k,       XK_d,      spawn,          SHCMD("pkill Discord")},
 		
-		{ MODKEY|ControlMask,                  -1,         XK_t,      setlayout,      { .v = &layouts[0] } },
-		{ ControlMask,                  -1,         XK_f,      setlayout,      {.v = &layouts[1]} },
-		{ ControlMask,                  -1,         XK_m,      setlayout,      {.v = &layouts[2]} },
-		{ ControlMask,                  -1,         XK_space,  setlayout,      {0} },
+		{ MODKEY,                  -1,         XK_t,      setlayout,      { .v = &layouts[0] } },
+		{ MODKEY,                  -1,         XK_f,      setlayout,      {.v = &layouts[1]} },
+		{ MODKEY,                  -1,         XK_m,      setlayout,      {.v = &layouts[2]} },
+		{ MODKEY,                  -1,         XK_space,  setlayout,      {0} },
 		
 		{ MODKEY|ShiftMask,             -1,         XK_space,  togglefloating, {0} },
 		{ MODKEY,                       -1,         XK_0,      view,           {.ui = ~0 } },
@@ -70,15 +73,16 @@ static const Key keys[] = {
 		{ MODKEY,                       XK_a,       XK_t,      spawn,          SHCMD("xdotool key Super_L+9 && alacritty") }, // open alacritty on tag9
 		{ MODKEY,                       -1,         XK_r,      spawn,          SHCMD("xdotool key Super_L+6 && atril") },
 		{ MODKEY,                       XK_b,       XK_k,      spawn,          SHCMD("xdotool key Super_L+3 && brave") }, // open brave on tag3
-		{ MODKEY,                       -1,         XK_d,      spawn,          SHCMD("xdotool key Super_L+2 && discord") }, // open discord on tag2
+		{ MODKEY,                       XK_o,         XK_o,      spawn,          SHCMD("xdotool key Super_L+2 && discord") }, // open discord on tag2
 		{ MODKEY,                       XK_f,       XK_m,      spawn,          SHCMD("xdotool key Super_L+1 && dolphin") }, // open dolphin on tag1
 		{ MODKEY,                       -1,         XK_g,      spawn,          SHCMD("xdotool key Super_L+5 && github-desktop") }, // open github-desktop on tag5
         { MODKEY,                       -1,         XK_v,      spawn,          SHCMD("pavucontrol") },
 	    { MODKEY,                       XK_i,       XK_v,      spawn,          SHCMD("gwenview") },
         { MODKEY,                       XK_j,       XK_b,      spawn,          SHCMD("jetbrains-toolbox") },
-		{ MODKEY,                       XK_n,       XK_v,      spawn,          SHCMD(TERMINAL " -e nvim") },
+		{ MODKEY,                       XK_n,       XK_v,      spawn,          { .v = nvimcmd } },
 		{ ControlMask|ShiftMask,        -1,         XK_s,      spawn,          SHCMD("spectacle") }, // take a screenshot
-		{ MODKEY,                       -1,         XK_s,      spawn,          SHCMD("xdotool key Super_L+8 && brave --app=https://open.spotify.com/collection/tracks") },	
+		// { MODKEY,                       -1,         XK_s,      spawn,          SHCMD("xdotool key Super_L+8 && brave --app=https://open.spotify.com/collection/tracks") },	
+		{ MODKEY,                       -1,         XK_s,      spawn,          SHCMD("xdotool key Super_L+8 && spotube") },	
 
  
 		TAGKEYS(                        -1,         XK_1,                      0)
@@ -91,7 +95,7 @@ static const Key keys[] = {
 		TAGKEYS(                        -1,         XK_8,                      7)
 		TAGKEYS(                        -1,         XK_9,                      8)
 		
-		{ MODKEY|ShiftMask,             -1,         XK_x,      quit,           {0} },
+		{ MODKEY|ShiftMask,             -1,         XK_q,      quit,           {0} },
 	    { MODKEY|ControlMask|ShiftMask, -1,         XK_r,      quit,           {1} },	// restart
 
 		{ MODKEY,						-1,			XK_F10,	   spawn,		   { .v = scrotselcmd } },

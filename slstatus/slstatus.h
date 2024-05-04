@@ -2,6 +2,7 @@
 
 /* battery */
 const char *battery_perc(const char *);
+void battery_notify(const char *);
 const char *battery_state(const char *);
 const char *battery_remaining(const char *);
 
@@ -75,6 +76,7 @@ const char *uid(const char *unused);
 
 /* volume */
 const char *vol_perc(const char *card);
+const char *alsa_master_vol(void);
 
 /* wifi */
 const char *wifi_perc(const char *interface);

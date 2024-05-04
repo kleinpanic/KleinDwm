@@ -9,6 +9,14 @@ static const char unknown_str[] = "n/a";
 /* maximum output string length */
 #define MAXLEN 2048
 
+/* battery levels to notify - add any levels you want to receive notification for (in percent) */
+const int notifiable_levels[] = {
+    20,
+    10,
+    5,
+};
+
+
 static const struct arg args[] = {
 	/* function format                      argument */
     { battery_perc,     "%s%%",        "BAT0" },
@@ -19,6 +27,7 @@ static const struct arg args[] = {
 	
     { datetime,         " %s  ",      "%F" },
     { datetime,         " %s  |",     "%T" },
+	{ battery_notify,   "",            "BAT0" },
 
     { keymap,           " %s  ",      NULL },
 };
@@ -30,6 +39,8 @@ static const struct arg args[] = {
  *                                                     NULL on OpenBSD/FreeBSD
  * battery_state       battery charging state          battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
+ * battery_notify      linux battery notifications     battery name (BAT0)
+ *													   OpenBSD/FreeBSD not supported
  * battery_remaining   battery remaining HH:MM         battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
  * cpu_perc            cpu usage in percent            NULL
@@ -71,6 +82,7 @@ static const struct arg args[] = {
  * uid                 UID of current user             NULL
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
+ * alsa_master_vol     ALSA Master device volume       NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
  *                                                     NULL on OpenBSD/FreeBSD
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
