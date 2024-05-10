@@ -294,7 +294,7 @@ get_battery() {
 get_wifi() { 
 	local color=$color_black
 	local bg=$color_grey
-	local ssid=$(iwgetid -r)
+    local ssid=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
 	ssid="${ssid:-No WiFi}"
 	ssid="${ssid:0:15}"
 	
