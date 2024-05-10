@@ -3,9 +3,7 @@
 #include "colors/space.h"
 #include "keys.h"
 
-#define TERMINAL	"alacritty"              // default terminal
-
-/* appearance */
+#define TERMINAL	"alacritty"              // default terminal appearance */
 #define ICONSIZE 19   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -32,13 +30,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Tk",       NULL,       NULL,       0,            1,           -1 },
-    { NULL,       NULL, "Brightness Control", 0,        1,           -1 },
-    { NULL,       NULL, "Screenshot Tool", 0,           1,           -1 },
-	{ "conky",	  NULL,		  NULL,		  0,			1,			 -1	},
-	{ NULL,		  NULL,		  "Task Tray", 0,	     	1,	         -1 },
-	{ NULL,       NULL,       "YAD",      0,            1,           -1 },
+	/* class        instance    title       tags mask     isfloating  CenterThisWindow?  monitor */
+	{ "Gimp",       NULL,       NULL,       0,            1,          0,                 -1 },
+	{ "Tk",         NULL,       NULL,       0,            1,          0,                 -1 },
+    { NULL,         NULL, "Brightness Control", 0,        1,          0,                 -1 },
+    { NULL,         NULL, "Screenshot Tool", 0,           1,          0,                 -1 },
+	{ "conky",	    NULL,		NULL,		  0,		  1,		  0,                 -1 },
+	{ NULL,		    NULL,		  "Task Tray", 0,	      1,	      0,                 -1 },
+	{ NULL,         NULL,       "YAD",      0,            1,          0,                 -1 },
 
 };
+
