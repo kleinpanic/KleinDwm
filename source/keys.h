@@ -24,7 +24,7 @@ static const char *inc_light[] = { "brightnessctl", "set", "+10%", NULL };
 static const char *dec_light[] = { "brightnessctl", "set", "10%-", NULL };
 
 /* screenshot command */
-static const char *scrotselcmd[] = { "scrot", "-s", "--freeze", "/home/klein/Pictures/screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png", NULL };
+static const char *scrotselcmd[] = { "scrot", "-s", "/home/klein/Pictures/screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png", NULL };
 
 /* volume controls */
 // Set up volume controls with amixer, and volumeicon. Without preset keys volumeicon will take over (provided constantly running)
